@@ -10,7 +10,6 @@ export default function App({ Component, pageProps }) {
       <div className="container">
         <Component {...pageProps} />
       </div>
-      {/* <Component {...pageProps} /> */}
     </AuthContextProvider>
   )
 }
