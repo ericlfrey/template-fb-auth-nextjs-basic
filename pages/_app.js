@@ -7,7 +7,10 @@ export default function App({ Component, pageProps }) {
   return (
     <AuthContextProvider>
       <NavBar />
-      <Component {...pageProps} />
+      <div className="container">
+        <Component {...pageProps} />
+      </div>
+      {/* <Component {...pageProps} /> */}
     </AuthContextProvider>
   )
 }
