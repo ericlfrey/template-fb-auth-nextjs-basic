@@ -1,10 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
-import { useAuth } from "@/utils/context/AuthContext";
 import { Button } from "react-bootstrap";
 
 export default function Home() {
-  const { user } = useAuth();
-  console.log(user);
   return (
     <>
       <h1>home</h1>
