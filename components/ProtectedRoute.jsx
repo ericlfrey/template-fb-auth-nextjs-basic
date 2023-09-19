@@ -7,8 +7,6 @@ const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth();
 
   useEffect(() => {
-    console.log('loading:', loading);
-    console.log('user:', user);
     const checkAuthentication = async () => {
       if (!loading) {
         if (!user?.uid) {

@@ -1,6 +1,7 @@
 import { useAuth } from '@/utils/context/AuthContext';
 import { useRouter } from 'next/router';
 import React from 'react';
+import { Button, Form } from 'react-bootstrap';
 import { FormProvider, useForm } from 'react-hook-form';
 
 const SignupPage = () => {
@@ -27,26 +28,26 @@ const SignupPage = () => {
     <div className="sign-up-form">
       <h2>Sign Up</h2>
       <FormProvider {...methods}>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div>
-            <label>Email</label>
-            <input
+        <Form onSubmit={handleSubmit(onSubmit)} className="auth-form">
+          <Form.Group>
+            <Form.Label>Email</Form.Label>
+            <Form.Control
               type="email"
               {...register('email', { required: 'Email is required' })}
             />
             {errors.email && <p>{errors.email.message}</p>}
-          </div>
-          <div>
-            <label>Password</label>
-            <input
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Password</Form.Label>
+            <Form.Control
               type="password"
               {...register('password', { required: 'Password is required' })}
             />
             {errors.password && <p>{errors.password.message}</p>}
-          </div>
-          <div>
-            <label>Confirm Password</label>
-            <input
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Confirm Password</Form.Label>
+            <Form.Control
               type="password"
               {...register('password_confirm', {
                 required: 'Verify your password',
@@ -55,11 +56,11 @@ const SignupPage = () => {
             {errors.password_confirm && (
               <p>{errors.password_confirm.message}</p>
             )}
-          </div>
+          </Form.Group>
           <div>
-            <button type="submit">Submit</button>
+            <Button type="submit">Submit</Button>
           </div>
-        </form>
+        </Form>
       </FormProvider>
     </div>
   );
