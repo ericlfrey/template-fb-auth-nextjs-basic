@@ -1,8 +1,7 @@
 import { useAuth } from '@/utils/context/AuthContext';
 import { useRouter } from 'next/router';
-import Nav from 'react-bootstrap/Nav';
 import styles from './navbar.module.css';
-// import NavDropdown from 'react-bootstrap/NavDropdown';
+import Link from 'next/link';
 
 function NavBar() {
   const { user, logOut } = useAuth();
@@ -37,62 +36,41 @@ function NavBar() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <Nav.Link aria-current="page" href="/">
+              <Link passHref href="/" className="nav-link">
                 Home
-              </Nav.Link>
+              </Link>
             </li>
             {!user.uid ? (
               <>
-                <Nav.Link href="/signup">Sign Up</Nav.Link>
-                <Nav.Link href="/login">Log In</Nav.Link>
+                <li className="nav-item">
+                  <Link href="/signup" className=" nav-link">
+                    Sign Up
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link href="/login" className=" nav-link">
+                    Log In
+                  </Link>
+                </li>
               </>
             ) : (
               <>
-                <Nav.Link href="/dashboard">Dashboard</Nav.Link>
-                <Nav.Link href="#" onClick={handleLogout}>
-                  Log Out
-                </Nav.Link>
+                <li className="nav-item ">
+                  <Link href="/dashboard" className="nav-link">
+                    Dashboard
+                  </Link>
+                </li>
+                <li className="nav-item ">
+                  <Link href="#" onClick={handleLogout} className="nav-link">
+                    Log Out
+                  </Link>
+                </li>
               </>
             )}
           </ul>
         </div>
       </div>
     </nav>
-    // <Navbar expand="lg" className="bg-body-tertiary">
-    //   <Container>
-    //     <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-    //     <Navbar.Toggle aria-controls="basic-navbar-nav" />
-    //     <Navbar.Collapse id="basic-navbar-nav">
-    //       <Nav className="me-auto">
-    //         <Nav.Link href="/">Home</Nav.Link>
-    // {!user.uid ? (
-    //   <>
-    //     <Nav.Link href="/signup">Sign Up</Nav.Link>
-    //     <Nav.Link href="/login">Log In</Nav.Link>
-    //   </>
-    // ) : (
-    //   <>
-    //     <Nav.Link href="/dashboard">Dashboard</Nav.Link>
-    //     <Nav.Link href="/" onClick={handleLogout}>
-    //       Log Out
-    //     </Nav.Link>
-    //   </>
-    // )}
-    //         {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-    //           <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-    //           <NavDropdown.Item href="#action/3.2">
-    //             Another action
-    //           </NavDropdown.Item>
-    //           <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-    //           <NavDropdown.Divider />
-    //           <NavDropdown.Item href="#action/3.4">
-    //             Separated link
-    //           </NavDropdown.Item>
-    //         </NavDropdown> */}
-    //       </Nav>
-    //     </Navbar.Collapse>
-    //   </Container>
-    // </Navbar>
   );
 }
 
